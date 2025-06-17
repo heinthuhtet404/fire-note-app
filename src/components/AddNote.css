@@ -39,39 +39,3 @@ input {
 .submit-btn:hover {
     background-color: #45a049;
 }
-
-/* Responsive styles for tablets */
-@media screen and (max-width: 768px) {
-    form {
-        padding: 15px;
-        max-width: 90%; /* Adjust width for smaller screens */
-    }
-
-    input {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    .submit-btn {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-}
-
-/* Responsive styles for mobile devices */
-@media screen and (max-width: 480px) {
-    form {
-        padding: 10px;
-        max-width: 100%; /* Full width for mobile */
-    }
-
-    input {
-        font-size: 12px;
-        padding: 6px;
-    }
-
-    .submit-btn {
-        font-size: 12px;
-        padding: 6px 10px;
-    }
-}

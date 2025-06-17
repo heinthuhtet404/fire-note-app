@@ -1,35 +1,30 @@
 import React, { useState } from 'react'
 import './AddNote.css'
 
-const AddNote = () => {
+const AddNote = ({getNotes}) => {
   const [note, setNote] = useState('');
 
   // Function to handle adding a note
   const addNote = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     try {
-      await fetch('http://localhost:5000/notes', {
-        method: 'POST',
-        body: JSON.stringify(note),
+      await fetch('https://firenote-4e821-default-rtdb.firebaseio.com/notes.json', { // Firebase Realtime Database URL
+        method: 'POST', // Use POST to add a new note
+        body: JSON.stringify(note), // Convert note to JSON string
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json' // Set the content type to JSON
         }
       });
-      setNote('');
+      setNote(''); // Clear the input field after adding the note
+      getNotes(); // Refresh the notes after adding a new one
     } catch (error) {
-      alert('Error adding note');
-
-      
+      alert(`Error adding note: ${error.message}`);
     }
-    
-    
-
-
   }
 
-  return (
+  return ( 
     <section>
-      <form action="" onSubmit={addNote}>
+      <form action="" onSubmit={addNote}> 
         <input type="text" placeholder='Add note here' onChange={(e) => {
           setNote(e.target.value)
         }} />
@@ -39,4 +34,4 @@ const AddNote = () => {
   )
 }
 
-export default AddNote
+export default AddNote 
