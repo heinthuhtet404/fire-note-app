@@ -45,7 +45,7 @@ function App() {
 
   return (
     <>
-      <NavBar getNotes={getNotes} totalNotes={notes.length} /> 
+      <NavBar getNotes={getNotes} totalNotes={notes.length} />
       <AddNote getNotes={getNotes} />
       {loading && !error && <h1 className='loading'>Loading...</h1>}  {/* Show loading message while fetching notes */}
       {error && !loading && <h1 className='error'>Error fetching notes</h1>} {/* Show error message if there is an error */}
@@ -53,7 +53,7 @@ function App() {
         notes.length === 0 && !loading && !error ? (
           <h1 className='no-notes'>No notes available</h1>
         ) : null
-      } 
+      }
 
       {
         !loading && !error && notes.length > 0 ? ( // Check if notes are loaded and there are notes to display

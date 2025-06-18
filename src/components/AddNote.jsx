@@ -6,7 +6,13 @@ const AddNote = ({getNotes}) => {
 
   // Function to handle adding a note
   const addNote = async (e) => {
-    // e.preventDefault();
+    if(note.trim() === '') {
+      alert('Please enter a note');
+      return; // Stop the function if note is empty
+    }
+
+    e.preventDefault(); // Prevent the default form submission behavior
+
     try {
       await fetch('https://firenote-4e821-default-rtdb.firebaseio.com/notes.json', { // Firebase Realtime Database URL
         method: 'POST', // Use POST to add a new note
@@ -15,7 +21,9 @@ const AddNote = ({getNotes}) => {
           'Content-Type': 'application/json' // Set the content type to JSON
         }
       });
+
       setNote(''); // Clear the input field after adding the note
+      
       getNotes(); // Refresh the notes after adding a new one
     } catch (error) {
       alert(`Error adding note: ${error.message}`);
